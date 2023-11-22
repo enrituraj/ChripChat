@@ -1,0 +1,40 @@
+{% extends 'layouts/base.html' %}
+{% block title %}
+    <title>Register | ChripChat</title>
+{% endblock title %}
+
+{% block content %}
+
+    <div class="item_center">
+        <div class="card">
+            
+            <a href="{{url_for('home')}}" class="logo border-bottom">
+                <img src="{{ url_for('static', filename='img/logo.webp') }}" class="logo_img" alt="">
+                <h2>Sign <span>Up</span></h2>                    
+            </a><br>
+            
+            <form action="{{url_for('register')}}" method="post">
+                <div class="form_group">
+                    <label for="name">Name</label>
+                    <input type="text" class="input_box" name="name" placeholder="Enter Your Fullname">
+                </div>
+                <div class="form_group">
+                    <label for="ChripId">ChripId</label>
+                    <input type="text" class="input_box" name="chripid" placeholder="Create Your ChripId">
+                </div>
+                <div class="form_group">
+                    <label for="password">Password</label>
+                    <input type="password" class="input_box" name="password" id="password" placeholder="Enter Strong Password">
+                </div>
+                <div class="form_group flex item-2">
+                    <p class="fs-14">Click here to
+                        <a class="text-danger" href="{{ url_for('login') }}">Login</a>
+                    </p>
+                    <button class="btn btn-primary">Register Now</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+{% endblock content %}

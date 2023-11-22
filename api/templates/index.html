@@ -1,0 +1,29 @@
+{% extends 'layouts/base.html' %}
+{% block title %}
+    <title>Home | ChripChat</title>
+{% endblock title %}
+
+{% block content %}
+
+    <div class="item_center">
+        <div class="card">
+            <a href="{{url_for('home')}}" class="logo border-bottom">
+                <img src="{{ url_for('static', filename='img/logo.webp') }}" class="logo_img" alt="">
+                <h2>Chrip<span>Chat</span></h2>                    
+            </a><br>
+            {% if user %}
+
+                <h2>Wlecome, {{ user.name | default('N/A') }}</h2>
+                <h2>chripid, {{ user.chrip_id | default('N/A') }}</h2>
+
+                <a href="{{ url_for('logout') }}" class="form_group btn btn-danger">Logout</a>
+
+            {% else %}
+            <a href="{{ url_for('home') }}" class="form_group btn btn-slate">Home page</a>
+            <a href="{{ url_for('login') }}" class="form_group btn btn-danger">Login Now</a>
+            <a href="{{ url_for('register') }}" class="form_group btn btn-primary">Register</a>
+            {% endif %}
+        </div>
+    </div>
+
+{% endblock content %}

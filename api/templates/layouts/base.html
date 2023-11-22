@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='img/logo.webp') }}" type="image/x-icon">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    {% block title %}{% endblock title %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>  
+    <header class="header">
+        <nav class="navbar">
+                <a href="{{url_for('home')}}" class="logo">
+                    <img src="{{ url_for('static', filename='img/logo.webp') }}" class="logo_img" alt="">
+                    <h2>Chrip<span>Chat</span></h2>                    
+                </a>
+            <ul class="menu">
+                <li>
+                    <a href="{{ url_for('login') }}" class="menu_link btn-danger">Sign in</a>
+                </li>
+                <li>
+                    <a href="{{ url_for('register') }}" class="menu_link btn-primary">Sign up</a>
+                </li>
+            </ul>
+
+        </nav>
+    </header>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="alert">
+                {% for category,message in messages %}
+                <div class="alert-box {{category}}">{{ message }}</div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+    <!-- <div class="alert">
+        <div class="alert-box error">
+            Something went wronge.
+        </div>
+    </div>
+    <div class="alert">
+        <div class="alert-box success">
+            Something went wronge.
+        </div>
+    </div> -->
+    {% block content %}{% endblock content %}
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
